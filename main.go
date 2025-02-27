@@ -39,7 +39,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error reading the sheet. Please check if the file is properly formatted. Error: %v", err)
 	}
-    var students []Student
+	var students []Student
 	var totalSum, quizSum, midSemSum, labTestSum, weeklyLabSum, preCompreSum, compreSum float64
 	branchWiseScores := make(map[string][]float64) // to store total scores for each branch
 	headerSkipped := false                         // flag to skip header row
@@ -63,7 +63,7 @@ func main() {
 		preCompreScore, _ := strconv.ParseFloat(row[8], 64)
 		compreScore, _ := strconv.ParseFloat(row[9], 64)
 		totalScore, _ := strconv.ParseFloat(row[10], 64)
-        // validating computed total against provided total
+		// validating computed total against provided total
 		computedTotal := quizScore + midSemScore + labTestScore + weeklyLabScore + compreScore
 		if totalScore != computedTotal {
 			log.Printf("Mismatch detected for EmplID %s. Expected: %.2f, Found: %.2f.", row[2], computedTotal, totalScore)
@@ -99,7 +99,6 @@ func main() {
 	}
 	totalStudents := float64(len(students))
 
-
 	// to print general average scores
 	fmt.Println("General Averages:")
 	fmt.Printf("Quiz: %.2f\n", quizSum/totalStudents)
@@ -119,3 +118,25 @@ func main() {
 		}
 		fmt.Printf("Branch %s: %.2f\n", branch, branchTotal/float64(len(scores)))
 	}
+	// identifying and display top 3 students for each category
+	fmt.Println("\nTop 3 Students for Each Category:")
+	categories := map[string]func(Student) float64{
+		"Quiz":        func(s Student) float64 { return s.QuizScore },
+		"Mid-Sem":     func(s Student) float64 { return s.MidSemScore },
+		"Lab Test":    func(s Student) float64 { return s.LabTestScore },
+		"Weekly Labs": func(s Student) float64 { return s.WeeklyLabScore },
+		"Pre-Compre":  func(s Student) float64 { return s.PreCompreScore },
+		"Compre":      func(s Student) float64 { return s.CompreScore },
+		"Total":       func(s Student) float64 { return s.TotalScore },
+	}
+
+	for category, scoreExtractor := range categories {
+		fmt.Printf("\n%s:\n", category)
+		sort.Slice(students, func(i, j int) bool {
+			return scoreExtractor(students[i]) > scoreExtractor(students[j])
+		})
+		for i := 0; i < 3 && i < len(students); i++ {
+			fmt.Printf("%d. EmplID: %s, Marks: %.2f\n", i+1, students[i].EmplID, scoreExtractor(students[i]))
+		}
+	}
+}
