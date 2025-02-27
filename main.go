@@ -63,7 +63,59 @@ func main() {
 		preCompreScore, _ := strconv.ParseFloat(row[8], 64)
 		compreScore, _ := strconv.ParseFloat(row[9], 64)
 		totalScore, _ := strconv.ParseFloat(row[10], 64)
-        // Validate computed total against provided total
+        // validating computed total against provided total
 		computedTotal := quizScore + midSemScore + labTestScore + weeklyLabScore + compreScore
 		if totalScore != computedTotal {
 			log.Printf("Mismatch detected for EmplID %s. Expected: %.2f, Found: %.2f.", row[2], computedTotal, totalScore)
+		}
+
+		// storing student details
+		students = append(students, Student{
+			EmplID:         row[2],
+			CampusID:       row[3],
+			QuizScore:      quizScore,
+			MidSemScore:    midSemScore,
+			LabTestScore:   labTestScore,
+			WeeklyLabScore: weeklyLabScore,
+			PreCompreScore: preCompreScore,
+			CompreScore:    compreScore,
+			TotalScore:     totalScore,
+		})
+
+		// accumulating total marks for general averages
+		totalSum += totalScore
+		quizSum += quizScore
+		midSemSum += midSemScore
+		labTestSum += labTestScore
+		weeklyLabSum += weeklyLabScore
+		preCompreSum += preCompreScore
+		compreSum += compreScore
+
+		// extracting branchwise data for 2024 batch
+		if len(row[3]) >= 6 && row[3][:4] == "2024" {
+			branchCode := row[3][4:6] // extracting branch code
+			branchWiseScores[branchCode] = append(branchWiseScores[branchCode], totalScore)
+		}
+	}
+	totalStudents := float64(len(students))
+
+
+	// to print general average scores
+	fmt.Println("General Averages:")
+	fmt.Printf("Quiz: %.2f\n", quizSum/totalStudents)
+	fmt.Printf("Mid-Sem: %.2f\n", midSemSum/totalStudents)
+	fmt.Printf("Lab Test: %.2f\n", labTestSum/totalStudents)
+	fmt.Printf("Weekly Labs: %.2f\n", weeklyLabSum/totalStudents)
+	fmt.Printf("Pre-Compre: %.2f\n", preCompreSum/totalStudents)
+	fmt.Printf("Compre: %.2f\n", compreSum/totalStudents)
+	fmt.Printf("Overall Total: %.2f\n", totalSum/totalStudents)
+
+	// to print branch-wise average scores
+	fmt.Println("\nBranch-wise Averages (2024 Batch):")
+	for branch, scores := range branchWiseScores {
+		branchTotal := 0.0
+		for _, score := range scores {
+			branchTotal += score
+		}
+		fmt.Printf("Branch %s: %.2f\n", branch, branchTotal/float64(len(scores)))
+	}
