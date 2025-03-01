@@ -1,0 +1,178 @@
+{
+  "generalAverages": {
+    "quiz": 11.63184584178499,
+    "midSem": 34.66784989858012,
+    "labTest": 19.13995943204868,
+    "weeklyLabs": 27.756643002028394,
+    "preCompre": 93.186784989858,
+    "compre": 46.71095334685598,
+    "total": 139.9985294117647
+  },
+  "branchAverages": {
+    "A3": 146.02220588235295,
+    "A4": 125.65274725274723,
+    "A5": 68.7409375,
+    "A7": 165.84041095890413,
+    "A8": 130.85250000000002,
+    "AA": 143.71085714285715,
+    "AD": 144.33870967741936
+  },
+  "topStudents": {
+    "Compre": [
+      {
+        "emplID": "11120240360",
+        "marks": 95,
+        "rank": 1
+      },
+      {
+        "emplID": "11120240738",
+        "marks": 94,
+        "rank": 2
+      },
+      {
+        "emplID": "11120240613",
+        "marks": 93,
+        "rank": 3
+      }
+    ],
+    "Lab Test": [
+      {
+        "emplID": "11120210006",
+        "marks": 60,
+        "rank": 1
+      },
+      {
+        "emplID": "11120240025",
+        "marks": 60,
+        "rank": 2
+      },
+      {
+        "emplID": "11120210442",
+        "marks": 60,
+        "rank": 3
+      }
+    ],
+    "Mid-Sem": [
+      {
+        "emplID": "11120240646",
+        "marks": 67.5,
+        "rank": 1
+      },
+      {
+        "emplID": "11120240610",
+        "marks": 67,
+        "rank": 2
+      },
+      {
+        "emplID": "11120240026",
+        "marks": 66.5,
+        "rank": 3
+      }
+    ],
+    "Pre-Compre": [
+      {
+        "emplID": "11120210006",
+        "marks": 179,
+        "rank": 1
+      },
+      {
+        "emplID": "11120240610",
+        "marks": 178,
+        "rank": 2
+      },
+      {
+        "emplID": "11120221182",
+        "marks": 171,
+        "rank": 3
+      }
+    ],
+    "Quiz": [
+      {
+        "emplID": "11120240591",
+        "marks": 27.5,
+        "rank": 1
+      },
+      {
+        "emplID": "11120240553",
+        "marks": 24.5,
+        "rank": 2
+      },
+      {
+        "emplID": "11120210006",
+        "marks": 24,
+        "rank": 3
+      }
+    ],
+    "Total": [
+      {
+        "emplID": "11120240610",
+        "marks": 267.5,
+        "rank": 1
+      },
+      {
+        "emplID": "11120210006",
+        "marks": 267,
+        "rank": 2
+      },
+      {
+        "emplID": "11120240522",
+        "marks": 257.5,
+        "rank": 3
+      }
+    ],
+    "Weekly Labs": [
+      {
+        "emplID": "11120240433",
+        "marks": 30,
+        "rank": 1
+      },
+      {
+        "emplID": "11120240408",
+        "marks": 30,
+        "rank": 2
+      },
+      {
+        "emplID": "11120241100",
+        "marks": 30,
+        "rank": 3
+      }
+    ]
+  },
+  "discrepancies": [
+    {
+      "emplID": "11120212629",
+      "expectedTotal": 34.129999999999995,
+      "actualTotal": 34.13
+    },
+    {
+      "emplID": "11120210741",
+      "expectedTotal": 121.5,
+      "actualTotal": 169.5
+    },
+    {
+      "emplID": "11120240051",
+      "expectedTotal": 56.379999999999995,
+      "actualTotal": 56.38
+    },
+    {
+      "emplID": "11120240366",
+      "expectedTotal": 184,
+      "actualTotal": 182
+    },
+    {
+      "emplID": "11120240453",
+      "expectedTotal": 141,
+      "actualTotal": 140
+    },
+    {
+      "emplID": "11120241093",
+      "expectedTotal": 34.379999999999995,
+      "actualTotal": 34.38
+    },
+    {
+      "emplID": "11120240065",
+      "expectedTotal": 49.379999999999995,
+      "actualTotal": 49.38
+    }
+  ]
+}
